@@ -1,0 +1,31 @@
+<div>
+    <h2>Liste des Fournisseurs</h2>
+    <ul>
+      <li *ngFor="let fournisseur of fournisseurs">
+        {{ fournisseur.nom }} - 
+        <button (click)="setEditerFournisseur(fournisseur)">Editer</button>
+        <button (click)="supprimerFournisseur(fournisseur.id)">Supprimer</button>
+      </li>
+    </ul>
+  
+    <h2>Ajouter un Fournisseur</h2>
+    <form (ngSubmit)="ajouterFournisseur()">
+      <label for="nom">Nom:</label>
+      <input type="text" [(ngModel)]="nouveauFournisseur.nom" name="nom" required>
+  
+  
+      <button type="submit">Ajouter</button>
+    </form>
+  
+    <div *ngIf="editerFournisseur">
+      <h2>Editer Fournisseur</h2>
+      <form (ngSubmit)="modifierFournisseur(editerFournisseur)">
+        <label for="nom">Nom:</label>
+        <input type="text" [(ngModel)]="editerFournisseur.nom" name="nom" required>
+  
+  
+        <button type="submit">Modifier</button>
+      </form>
+    </div>
+  </div>
+  
